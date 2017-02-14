@@ -18,6 +18,10 @@
     <%= f.input :price, :label => "价格"%>
   </div>
 
+  <div class="group">
+    <%= f.input :image, as: :file %>
+  </div>
+  
   <%= f.submit "提交", data: { dsiable_with:"Submitting..."} %>
 
 <% end %>
