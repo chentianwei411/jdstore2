@@ -1,42 +1,32 @@
-
-<h2> Product List </h2>
-<div class="pull-right" style="padding-bottom: 20px;">
-  <%= link_to("新增产品", new_admin_product_path, class: "btn btn-primary btn-sm") %>
+<h2>Product List</h2>
+<div class="pull-right" style="padding-bottom:20px;">
+  <%= link_to("新增产品", new_admin_product_path, class: "btn btn-sm btn-primary" )%>
 </div>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>#</th>
-      <th width="220">Product Pic</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th width="100"> Options</th>
+      <th>商品照片</th>
+      <th>商品名称</th>
+      <th>价格</th>
+      <th>操作选项</th>
     </tr>
   </thead>
   <tbody>
-    <% @products.each do |product| %>
+    <% @products.each do |product|  %>
       <tr>
+        <td><%= product.id %></td>
         <td>
-          <%= product.id %>
-        </td>
-        <td>
-          <%= link_to product_path(product) do %>
-            <% if product.image.present? %>
-              <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
-            <% else %>
-              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-            <% end %>
+          <% if product.image.present?%>
+            <%= image_tag(product.image.thumb.url, class: "thumbnail")%>
+          <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+            <!--http://placehold.it/200x200&text=No Pic 代码很重要  -->
           <% end %>
         </td>
-        <td>
-          <%= product.title %>
-        </td>
-        <td>
-          <%= product.price %>
-        </td>
-        <td>
-          <%= link_to("Edit", edit_admin_product_path(product)) %>
-        </td>
+        <td><%= product.title%></td>
+        <td><%= product.price %></td>
+        <td><%= link_to("修改", edit_admin_product_path(product) )%></td>
       </tr>
     <% end %>
   </tbody>
