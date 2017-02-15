@@ -18,7 +18,7 @@
     <div class="product-price"> <%= @product.price %> 元</div>
     <!--product-price 是哪里的类  -->
     <div class="pull-right">
-      <%= link_to("加入购物车","#", class: "btn btn-danger btn-lg")%>
+      <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger btn-lg")%>
     </div>
   </div>
 </div>
