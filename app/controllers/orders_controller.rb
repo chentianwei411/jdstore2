@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
         product_list.save
       end
 
-      redirect_to order_path(@order)
+      redirect_to order_path(@order.token)
     else
       render 'carts/checkout'
       # 可以理解这个用法。checkout.html.erb是订单的界面，相当于返回新建页面。
@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by_token(params[:id])
+    # token
     @product_lists = @order.product_lists
   end
 
