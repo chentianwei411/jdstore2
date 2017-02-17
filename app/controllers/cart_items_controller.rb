@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     @cart_item = @cart.cart_items.find_by(product_id: params[:id])
 
     if @cart_item.product.quantity >= cart_item_params[:quantity].to_i
-      # 不理解？
+      # cart_item_params[:quantity]是从数组中返回的数值，所以要用to_i ,转化为integer
       @cart_item.update(cart_item_params)
       flash[:notice] = "耶，成功变更购买数量"
     else
